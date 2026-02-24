@@ -10,6 +10,7 @@ import { helmetConfiguration } from './helmet-configuration.js';
 import { requestLimit } from '../middlewares/request-limit.js';
 import { errorHandler } from '../middlewares/handle-errors.js';
 import userRoutes from '../src/users/user.routes.js';
+import postRoutes from '../src/posts/posts.routes.js';
 
 const BASE_PATH = '/chatter/v1';
 
@@ -25,7 +26,8 @@ const middlewars = (app) => {
 const routes = (app) => {
 
     app.use(`${BASE_PATH}/users`, userRoutes);
-
+    app.use(`${BASE_PATH}/posts`, postRoutes);
+    
     app.get(`${BASE_PATH}/Health`, () => {
         response.status(200).json({
             status: 'Healthy',
